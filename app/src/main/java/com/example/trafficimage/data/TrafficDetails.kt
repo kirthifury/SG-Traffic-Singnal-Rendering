@@ -1,4 +1,4 @@
-package com.example.trafficimage.models
+package com.example.trafficimage.data
 
 data class TrafficDetails(
     val api_info: ApiInfo,

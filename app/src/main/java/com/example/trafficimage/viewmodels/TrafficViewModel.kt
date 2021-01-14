@@ -6,18 +6,22 @@ import com.example.trafficimage.api.ApiClient
 import com.example.trafficimage.utils.ApiResponse
 import com.example.trafficimage.utils.ApiStatus
 import kotlinx.coroutines.Dispatchers
-import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TrafficViewModel() : ViewModel() {
+
     fun getTrafficCameras() = liveData(Dispatchers.IO) {
         emit(ApiResponse.progress(data = null))
         try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).format(Date())
             emit(
                 ApiResponse(
                     apiStatus = ApiStatus.SUCCESS,
-                    data = ApiClient.apiService.getTrafficImages("2021-01-12T13:00:00"),
+                    data = ApiClient.apiService.getTrafficImages(sdf),
                     message = null
                 )
+
             )
         } catch (exception: Exception) {
             emit(
@@ -30,4 +34,5 @@ class TrafficViewModel() : ViewModel() {
 
         }
     }
+
 }

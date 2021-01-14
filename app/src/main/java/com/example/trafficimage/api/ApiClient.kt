@@ -1,11 +1,9 @@
 package com.example.trafficimage.api
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object ApiClient {
     private const val BASE_URL: String = "https://api.data.gov.sg/v1/transport/"
